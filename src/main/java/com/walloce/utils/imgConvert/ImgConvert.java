@@ -12,7 +12,7 @@ public class ImgConvert {
      *      1：保存正常
      *      0：保存失败
      */
-    public static int saveToImgByStr(String imgStr,String imgPath,String imgName){
+    public int saveToImgByStr(String imgStr,String imgPath,String imgName){
         System.out.println("二进制字符串开始转换为图片...");
         int stateInt = 1;
         if(imgStr != null && imgStr.length() > 0){
@@ -51,7 +51,7 @@ public class ImgConvert {
      *      1：保存正常
      *      0：保存失败
      */
-    public static int saveToImgByBytes(File imgFile,String imgPath,String imgName){
+    public int saveToImgByBytes(File imgFile,String imgPath,String imgName){
         System.out.println("二进制文件转换为图片文件...");
         int stateInt = 1;
         if(imgFile.length() > 0){
@@ -73,7 +73,6 @@ public class ImgConvert {
             } catch (Exception e) {
                 stateInt = 0;
                 e.printStackTrace();
-            } finally {
             }
         }
         return stateInt;
@@ -84,7 +83,7 @@ public class ImgConvert {
      * @param b
      * @return
      */
-    public static String byte2hex(byte[] b) {
+    public String byte2hex(byte[] b) {
         System.out.println("二进制开始转字符串...");
         StringBuffer sb = new StringBuffer();
         String stmp = "";
@@ -104,7 +103,7 @@ public class ImgConvert {
      * @param str 要转换的字符串
      * @return  转换后的二进制数组
      */
-    public static byte[] hex2byte(String str) {
+    public byte[] hex2byte(String str) {
         System.out.println("字符串开始转为二进制数组...");
         if (str == null)
             return null;
@@ -182,9 +181,9 @@ public class ImgConvert {
 
         ImgConvert file = new ImgConvert();
         byte[] bytes = file.imgToBinary("F:\\松江网站文件\\images\\beiyong.png");
-        String binaryStr = byte2hex(bytes);
+        String binaryStr = file.byte2hex(bytes);
         file.writeToFile("C:\\Users\\YinYichang\\Desktop\\test\\file", bytes);
         file.saveToImgByStr(binaryStr,"C:\\Users\\YinYichang\\Desktop\\test", "newImg.bmp");
-        //file.saveToImgByStr("", "", "");
+        /* file.saveToImgByStr("", "", ""); */
     }
 }
